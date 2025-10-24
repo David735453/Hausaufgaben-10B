@@ -16,8 +16,16 @@ export const postFilePaths = fs
 
 export const sortPostsByDate = (posts) => {
   return posts.sort((a, b) => {
-    const aDate = new Date(a.data.date);
-    const bDate = new Date(b.data.date);
+    const aDate = new Date(
+      a.data.date.includes('.')
+        ? a.data.date.split('.').reverse().join('-')
+        : a.data.date
+    );
+    const bDate = new Date(
+      b.data.date.includes('.')
+        ? b.data.date.split('.').reverse().join('-')
+        : b.data.date
+    );
     return bDate - aDate;
   });
 };
@@ -38,7 +46,11 @@ export const getPosts = () => {
 
   posts.forEach((post) => {
     if (post.data.date) {
-      const date = new Date(post.data.date);
+      const date = new Date(
+        post.data.date.includes('.')
+          ? post.data.date.split('.').reverse().join('-')
+          : post.data.date
+      );
       if (!isNaN(date)) {
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0');
