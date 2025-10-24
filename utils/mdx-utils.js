@@ -17,12 +17,12 @@ export const postFilePaths = fs
 export const sortPostsByDate = (posts) => {
   return posts.sort((a, b) => {
     const aDate = new Date(
-      a.data.date.includes('.')
+      typeof a.data.date === 'string' && a.data.date.includes('.')
         ? a.data.date.split('.').reverse().join('-')
         : a.data.date
     );
     const bDate = new Date(
-      b.data.date.includes('.')
+      typeof b.data.date === 'string' && b.data.date.includes('.')
         ? b.data.date.split('.').reverse().join('-')
         : b.data.date
     );
@@ -47,7 +47,7 @@ export const getPosts = () => {
   posts.forEach((post) => {
     if (post.data.date) {
       const date = new Date(
-        post.data.date.includes('.')
+        typeof post.data.date === 'string' && post.data.date.includes('.')
           ? post.data.date.split('.').reverse().join('-')
           : post.data.date
       );
