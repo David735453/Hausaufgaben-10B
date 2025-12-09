@@ -6,7 +6,7 @@ const ConfirmationModal = ({ show, title, message, onConfirm, onCancel }) => {
   }
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-gray-600/50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
       <div className="relative p-5 border border-gray-200 dark:border-gray-700 w-96 shadow-lg rounded-md bg-white">
         {' '}
         {/* Changed background */}

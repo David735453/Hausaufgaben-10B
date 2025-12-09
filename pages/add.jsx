@@ -100,7 +100,7 @@ export default function AddPostPage({ globalData }) {
       <Layout>
         <Header name={globalData.name} />
         <main className="w-full flex justify-center">
-          <div className="w-full max-w-2xl p-8 my-12 rounded-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10">
+          <div className="w-full max-w-2xl p-8 my-12 rounded-lg backdrop-blur-lg bg-white/10 dark:bg-black/30 border border-gray-800 dark:border-white/10 border-opacity-10 dark:border-opacity-10">
             <h1 className="text-3xl lg:text-4xl text-center mb-8">
               Access Denied
             </h1>
@@ -136,7 +136,7 @@ export default function AddPostPage({ globalData }) {
     <Layout>
       <Header name={globalData.name} />
       <main className="w-full flex justify-center">
-        <div className="w-full max-w-2xl p-8 my-12 rounded-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10">
+        <div className="w-full max-w-2xl p-8 my-12 rounded-lg backdrop-blur-lg bg-white/10 dark:bg-black/30 border border-gray-800 dark:border-white/10 border-opacity-10 dark:border-opacity-10">
           <h1 className="text-3xl lg:text-4xl text-center mb-8">
             Add New Blog Post
           </h1>
@@ -203,7 +203,7 @@ export default function AddPostPage({ globalData }) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-8 py-3 bg-primary text-white font-bold rounded-lg hover:bg-opacity-80 transition-opacity disabled:opacity-50"
+                className="px-8 py-3 bg-primary text-white font-bold rounded-lg hover:bg-primary/80 transition-opacity disabled:opacity-50"
               >
                 {isSubmitting ? 'Submitting...' : 'Add Post'}
               </button>

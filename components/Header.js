@@ -18,7 +18,11 @@ export default function Header({ name }) {
           Logout
         </button>
       )}
-      <div className="w-12 h-12 rounded-full block mx-auto mb-4 bg-gradient-conic from-gradient-3 to-gradient-4" />
+      <img
+        src="/favicon.ico"
+        alt="Logo"
+        className="w-12 h-12 rounded-full block mx-auto mb-4"
+      />
       <p className="text-2xl dark:text-white text-center">
         <Link href="/">{name}</Link>
       </p>

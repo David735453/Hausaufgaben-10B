@@ -68,7 +68,7 @@ export default function DeleteIndexPage({ posts, globalData }) {
       <Layout>
         <Header name={globalData.name} />
         <main className="w-full flex justify-center">
-          <div className="w-full max-w-2xl p-8 my-12 rounded-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10">
+          <div className="w-full max-w-2xl p-8 my-12 rounded-lg backdrop-blur-lg bg-white/10 dark:bg-black/30 border border-gray-800 dark:border-white/10 border-opacity-10 dark:border-opacity-10">
             <h1 className="text-3xl lg:text-4xl text-center mb-8">
               Access Denied
             </h1>
@@ -117,9 +117,9 @@ export default function DeleteIndexPage({ posts, globalData }) {
             posts.map((post) => (
               <li
                 key={post.filePath}
-                className="md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-50 transition border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 border-b-0 last:border-b hovered-sibling:border-t-0"
+                className="md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg bg-white/10 dark:bg-black/30 hover:bg-white/20 dark:hover:bg-black/50 transition border border-gray-800 dark:border-white/10 border-b-0 last:border-b hovered-sibling:border-t-0"
               >
-                <div className="py-6 lg:py-10 px-6 lg:px-16 block focus:outline-none focus:ring-4 flex justify-between items-center">
+                <div className="py-6 lg:py-10 px-6 lg:px-16 block focus:outline-none focus:ring-2 focus:ring-primary/50 flex justify-between items-center">
                   <div>
                     <h2 className="text-2xl md:text-3xl">{post.data.title}</h2>
                     {post.data.description && (

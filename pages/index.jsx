@@ -6,9 +6,6 @@ import Layout, { GradientBackground } from '../components/Layout';
 import ArrowIcon from '../components/ArrowIcon';
 import { getGlobalData } from '../utils/global-data';
 import SEO from '../components/SEO';
-import { FlagValues } from '@vercel/flags/react';
-import { decrypt, encrypt } from '@vercel/flags';
-import { safeJsonStringify } from '@vercel/flags';
 
 export default function Index({ posts, globalData }) {
   return (
@@ -23,12 +20,12 @@ export default function Index({ posts, globalData }) {
           {posts.map((post) => (
             <li
               key={post.filePath}
-              className="md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-50 transition border border-gray-800 dark:border-white border-opacity-10 dark:border-opacity-10 border-b-0 last:border-b hover:border-b hovered-sibling:border-t-0"
+              className="md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg bg-white/10 dark:bg-black/30 hover:bg-white/20 dark:hover:bg-black/50 transition border border-gray-800/10 dark:border-white/10 border-b-0 last:border-b hover:border-b hovered-sibling:border-t-0"
             >
               <Link
                 as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
                 href={`/posts/[slug]`}
-                className="py-6 lg:py-10 px-6 lg:px-16 block focus:outline-none focus:ring-4"
+                className="py-6 lg:py-10 px-6 lg:px-16 block focus:outline-none focus:ring-2 focus:ring-primary/50"
               >
                 {post.data.date && (
                   <p className="uppercase mb-3 font-bold opacity-60">
@@ -63,27 +60,9 @@ export default function Index({ posts, globalData }) {
 /**
  * A function which respects overrides set by the Toolbar, and returns feature flags.
  */
-async function getFlags(request) {
-  const overridesCookieValue = request.cookies['vercel-flag-overrides'];
-  const overrides = overridesCookieValue
-    ? await decrypt(overridesCookieValue)
-    : null;
-
-  const flags = {
-    banner: overrides?.banner ?? false,
-  };
-
-  return flags;
-}
-
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async () => {
   const posts = getPosts();
   const globalData = getGlobalData();
-  const flags = await getFlags(context.req);
-  const encryptedFlagValues = await encrypt(flags);
-  return { props: { posts, globalData, flags, encryptedFlagValues } };
-};
 
-<script type="application/json" data-flag-values>
-  ${safeJsonStringify({ exampleFlag: true })}
-</script>;
+  return { props: { posts, globalData } };
+};

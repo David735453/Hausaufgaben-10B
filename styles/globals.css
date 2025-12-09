@@ -1,7 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-gradient-1: var(--color-gradient-1);
+  --color-gradient-2: var(--color-gradient-2);
+  --color-gradient-3: var(--color-gradient-3);
+  --color-gradient-4: var(--color-gradient-4);
+
+  --font-primary: var(--font-primary);
+  --font-secondary: var(--font-secondary);
+
+  --background-image-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+}
+
+@utility bg-gradient-conic {
+  background-image: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+}
+
+/* Force class-based dark mode for the toggle to work */
+@variant dark (&:where(.dark, .dark *));
+
+/* Default Theme - Injected Manually for now as JS config migration to CSS is tricky with dynamic ENV vars. 
+   I will use the default values from themes.js assuming 'default' theme. as a fallback */
+:root {
+  --color-primary: #7d7aff;
+  --color-gradient-1: #7d7aff;
+  --color-gradient-2: #2121e2;
+  --color-gradient-3: #00fff0;
+  --color-gradient-4: #8785ff;
+  --font-primary: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-secondary: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
 
 h1,
 h2,
@@ -14,4 +55,60 @@ h6 {
 
 body {
   font-family: var(--font-secondary);
+}
+
+/* Custom Variants Implementation */
+.group:hover .group-hover\:block {
+  display: block;
+}
+
+:hover + .hovered-sibling\:border-t-0 {
+  border-top-width: 0px;
+}
+
+/* Typography Dark Mode Overrides */
+.dark .prose {
+  color: var(--color-gray-300);
+}
+.dark .prose [class~='lead'] {
+  color: var(--color-gray-400);
+}
+.dark .prose a {
+  color: var(--color-gray-100);
+}
+.dark .prose strong {
+  color: var(--color-gray-100);
+}
+.dark .prose ul > li::before {
+  background-color: var(--color-gray-700);
+}
+.dark .prose hr {
+  border-color: var(--color-gray-800);
+}
+.dark .prose blockquote {
+  color: var(--color-gray-100);
+  border-left-color: var(--color-gray-800);
+}
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4 {
+  color: var(--color-gray-100);
+}
+.dark .prose code {
+  color: var(--color-gray-100);
+}
+.dark .prose a code {
+  color: var(--color-gray-100);
+}
+.dark .prose pre {
+  color: var(--color-gray-200);
+  background-color: var(--color-gray-800);
+}
+.dark .prose thead {
+  color: var(--color-gray-100);
+  border-bottom-color: var(--color-gray-700);
+}
+.dark .prose tbody tr {
+  border-bottom-color: var(--color-gray-800);
 }
