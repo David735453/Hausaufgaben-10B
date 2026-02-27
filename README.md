@@ -1,4 +1,5 @@
-# Hausaufgaben-10B
+# archived due to inactivity
+## Hausaufgaben-10B
 
 Website für Klasse 10B
 
